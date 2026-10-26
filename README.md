@@ -24,7 +24,7 @@ Launcher Hub 把启动器做成模板：框架只负责壳，接入信息全部�
 4. **校验**：`tools/validate-apps.ps1` → 起 exe 跑 `--audit-layout` / `--audit-anim` / `--audit-icons`；
 5. **交付**：`LauncherHub.exe` + `apps/` + `assets/`。
 
-> `apps.example` 里是三种接入形态的样例（HTTP 探测、TCP 探测、日志解析）。只要 `apps/` 存在，运行时就不会使用内置示例。
+> `apps.example` 里是三种接入形态的样例（HTTP 探测、TCP 探测、日志解析）。只要 `apps/` 里有清单，运行时就用它替代内置示例。
 
 ## 能力
 
