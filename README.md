@@ -7,6 +7,10 @@
 > 单文件 exe：`.NET Framework 4.8 / WinForms / C# 5`，无第三方依赖。真实启停、健康探测、
 > 日志 tail、配置读写、外部实例接管、托盘、单实例都已接通。
 
+![演示：主页明暗切换与页签切换](preview/demo-sample.gif)
+
+> 11 秒真机演示（1920×1080@60 原片：[preview/demo-sample.mp4](preview/demo-sample.mp4)）：主页明暗切换 + 页签丝滑切换。
+
 | 亮色总览 | 暗色总览 |
 |---|---|
 | ![亮色总览](preview/home.png) | ![暗色总览](preview/dark-home.png) |
@@ -325,7 +329,7 @@ launcher-hub\
   docs\资产与品牌政策.md  品牌/视频边界
   docs\验收报告-缩放-2026-10-26.md  缩放验收
   design\concept.png     原始手绘设计稿
-  preview\               实机截图
+  preview\               实机截图、演示 GIF/MP4
   config.example.json    本机路径/远程入口模板
   build.ps1              csc.exe 编译
   tools\                 manifest/secret/audit helpers
