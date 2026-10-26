@@ -41,7 +41,7 @@
 ## 2. 快速开始（干净 clone）
 
 ```powershell
-git clone <this-repo> launcher-hub
+git clone https://github.com/ZYFsir/launcher-hub.git launcher-hub
 cd launcher-hub
 # 复制示例配置，按本机路径修改（config.local.json 已被 gitignore）
 Copy-Item config.example.json config.local.json
