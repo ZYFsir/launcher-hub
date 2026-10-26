@@ -7,9 +7,9 @@
 > 单文件 exe：`.NET Framework 4.8 / WinForms / C# 5`，无第三方依赖。真实启停、健康探测、
 > 日志 tail、配置读写、外部实例接管、托盘、单实例都已接通。
 
-![演示：主页明暗切换与页签切换](preview/demo-sample.gif)
+![演示：主页明暗切换与页签切换](preview/demo.gif)
 
-> 11 秒真机演示（1920×1080@60 原片：[preview/demo-sample.mp4](preview/demo-sample.mp4)）：主页明暗切换 + 页签丝滑切换。
+> 11 秒真机演示（1920×1080@60 原片：[preview/demo.mp4](preview/demo.mp4)）：主页明暗切换 + 页签丝滑切换。
 
 | 亮色总览 | 暗色总览 |
 |---|---|
