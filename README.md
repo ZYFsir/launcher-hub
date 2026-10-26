@@ -1,7 +1,7 @@
 # 应用工作台（Launcher Hub）· v2.4
 
 > 2026-10-25 建立并接线完成。把桌面上分散的 **llama.cpp / ComfyUI / DSH** 三个启动器合并成
-> 一个壳、一个窗口、一套状态机；新增应用只改「应用清单 + 运行时分支」，不再重写界面。
+> 一个壳、一个窗口、一套状态机；通用应用只改 `apps/<id>/app.json`，特殊应用再改运行时分支。
 >
 > **官方品牌资产**（llama.brand / comfy.org / 官方 DSH 客户端）与 **useAnimations 动态图标**已接入；
 > 单文件 exe：`.NET Framework 4.8 / WinForms / C# 5`，无第三方依赖。真实启停、健康探测、

@@ -478,6 +478,30 @@ namespace LauncherHub
             t.Start();
         }
 
+        string MCmd(string fallback)
+        {
+            if (_manifest != null && _manifest.launch != null && _manifest.launch.command.Length > 0)
+                return ResolveCommand(_manifest.launch.command, AppDomain.CurrentDomain.BaseDirectory);
+            return fallback;
+        }
+
+        string MCwd(string fallback)
+        {
+            if (_manifest != null && _manifest.launch != null && _manifest.launch.cwd.Length > 0)
+            {
+                string c = _manifest.launch.cwd;
+                return Path.IsPathRooted(c) ? c : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, c);
+            }
+            return fallback;
+        }
+
+        string MArgs(string fallback)
+        {
+            if (_manifest != null && _manifest.launch != null && _manifest.launch.args != null && _manifest.launch.args.Length > 0)
+                return Entry.LaunchArgs;
+            return fallback;
+        }
+
         void DoStart()
         {
             int port = Cfg.Port;
@@ -488,13 +512,14 @@ namespace LauncherHub
             }
             if (Kind == "llama")
             {
-                if (!File.Exists(Paths.LlamaScript)) throw new FileNotFoundException("找不到启动脚本：" + Paths.LlamaScript);
+                string script = MCmd(Paths.LlamaScript);
+                if (!File.Exists(script)) throw new FileNotFoundException("找不到启动脚本：" + script);
                 if (IsPortOpen(port)) throw new InvalidOperationException("端口 " + port + " 已被占用，请先停止或换端口。");
                 string ps = PowerShellPath();
                 ProcessStartInfo psi = new ProcessStartInfo();
                 psi.FileName = ps;
-                psi.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"" + Paths.LlamaScript + "\"";
-                psi.WorkingDirectory = Paths.LlamaRoot;
+                psi.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"" + script + "\"";
+                psi.WorkingDirectory = MCwd(Paths.LlamaRoot);
                 psi.UseShellExecute = false;
                 psi.CreateNoWindow = true;
                 psi.WindowStyle = ProcessWindowStyle.Hidden;
@@ -512,16 +537,18 @@ namespace LauncherHub
             }
             else if (Kind == "comfy")
             {
-                string mainPy = Path.Combine(Cfg.InstallPath, "main.py");
-                if (!File.Exists(Cfg.PythonPath)) throw new FileNotFoundException("找不到 Python：" + Cfg.PythonPath);
+                string install = MCwd(Cfg.InstallPath);
+                string python = MCmd(Cfg.PythonPath);
+                string mainPy = Path.Combine(install, "main.py");
+                if (!File.Exists(python)) throw new FileNotFoundException("找不到 Python：" + python);
                 if (!File.Exists(mainPy)) throw new FileNotFoundException("找不到 ComfyUI main.py：" + mainPy);
                 if (IsPortOpen(port)) throw new InvalidOperationException("端口 " + port + " 已被占用，请先停止或换端口。");
                 OpenComfyWriters();
                 ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = Cfg.PythonPath;
-                psi.Arguments = "main.py --listen 127.0.0.1 --port " + port.ToString()
-                    + (Cfg.ExtraArgs.Length > 0 ? " " + Cfg.ExtraArgs : "");
-                psi.WorkingDirectory = Cfg.InstallPath;
+                psi.FileName = python;
+                psi.Arguments = MArgs("main.py --listen 127.0.0.1 --port " + port.ToString()
+                    + (Cfg.ExtraArgs.Length > 0 ? " " + Cfg.ExtraArgs : ""));
+                psi.WorkingDirectory = install;
                 psi.UseShellExecute = false;
                 psi.CreateNoWindow = true;
                 psi.RedirectStandardOutput = true;
@@ -559,8 +586,8 @@ namespace LauncherHub
                 string ps = PowerShellPath();
                 ProcessStartInfo psi = new ProcessStartInfo();
                 psi.FileName = ps;
-                psi.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"" + Paths.DshScript + "\" -NoOpen -Port " + port.ToString();
-                psi.WorkingDirectory = Paths.DshDir;
+                psi.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"" + MCmd(Paths.DshScript) + "\" " + MArgs("-NoOpen -Port " + port.ToString());
+                psi.WorkingDirectory = MCwd(Paths.DshDir);
                 psi.UseShellExecute = false;
                 psi.CreateNoWindow = true;
                 psi.WindowStyle = ProcessWindowStyle.Hidden;
