@@ -7,7 +7,11 @@
   "launch": {
     "type": "powershell",
     "command": "scripts/start-dsh.ps1",
-    "args": ["-NoOpen", "-Port", "3080"],
+    "args": [
+      "-NoOpen",
+      "-Port",
+      "3080"
+    ],
     "cwd": ".",
     "stop": "none"
   },
@@ -23,7 +27,12 @@
     "follow": true
   },
   "params": [
-    { "key": "remote", "label": "远程入口", "type": "string", "default": "" }
+    {
+      "key": "remote",
+      "label": "远程入口",
+      "type": "string",
+      "default": ""
+    }
   ],
   "icon": {
     "tile": "assets/placeholders/generated/dsh-tile-1024.png",
@@ -33,6 +42,5 @@
     "license": "CC BY-SA 4.0",
     "credit": "Head-only image edit from Q版大肥鱼 reference sheet, TreapGoGo/deepseek-whale-girl; unofficial placeholder"
   },
-  "docs": "docs/apps/dsh.md",
   "enabled": true
 }

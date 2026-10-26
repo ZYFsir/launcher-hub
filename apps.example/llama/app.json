@@ -22,9 +22,26 @@
     "follow": true
   },
   "params": [
-    { "key": "model", "label": "模型", "type": "string", "default": "" },
-    { "key": "ctx", "label": "上下文", "type": "int", "default": 8192, "min": 512, "max": 131072 },
-    { "key": "mmproj", "label": "视觉 mmproj", "type": "string", "default": "" }
+    {
+      "key": "model",
+      "label": "模型",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "key": "ctx",
+      "label": "上下文",
+      "type": "int",
+      "default": 8192,
+      "min": 512,
+      "max": 131072
+    },
+    {
+      "key": "mmproj",
+      "label": "视觉 mmproj",
+      "type": "string",
+      "default": ""
+    }
   ],
   "icon": {
     "tile": "assets/placeholders/generated/llama-tile-1024.png",
@@ -34,6 +51,5 @@
     "license": "CC0-1.0",
     "credit": "Launcher Hub placeholder; generated with Qwen-Image"
   },
-  "docs": "docs/apps/llama.md",
   "enabled": true
 }
