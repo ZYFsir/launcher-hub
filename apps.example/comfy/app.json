@@ -1,0 +1,38 @@
+{
+  "id": "comfy",
+  "name": "ComfyUI",
+  "subtitle": "图像生成 · ROCm",
+  "kind": "comfy",
+  "accent": "#D7F34A",
+  "launch": {
+    "type": "process",
+    "command": "python",
+    "args": ["main.py", "--listen", "127.0.0.1", "--port", "8188"],
+    "cwd": ".",
+    "stop": "process-tree"
+  },
+  "health": {
+    "type": "http",
+    "url": "http://127.0.0.1:8188/system_stats",
+    "timeoutMs": 1500
+  },
+  "port": 8188,
+  "log": {
+    "file": "logs/comfy.out.log",
+    "follow": true
+  },
+  "params": [
+    { "key": "checkpoint", "label": "模型", "type": "string", "default": "" },
+    { "key": "vram", "label": "显存策略", "type": "enum", "options": ["normal", "low", "reserve"], "default": "normal" }
+  ],
+  "icon": {
+    "tile": "assets/placeholders/generated/comfy-tile-1024.png",
+    "mark": "assets/placeholders/generated/comfy-mark.png",
+    "source": "placeholder",
+    "wordSource": "text",
+    "license": "CC0-1.0",
+    "credit": "Launcher Hub placeholder; generated with Qwen-Image"
+  },
+  "docs": "docs/apps/comfy.md",
+  "enabled": true
+}

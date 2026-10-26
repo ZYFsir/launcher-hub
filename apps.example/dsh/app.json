@@ -1,0 +1,38 @@
+{
+  "id": "dsh",
+  "name": "DSH",
+  "subtitle": "Web 工作台 · Tailscale",
+  "kind": "dsh",
+  "accent": "#3A6BFF",
+  "launch": {
+    "type": "powershell",
+    "command": "scripts/start-dsh.ps1",
+    "args": ["-NoOpen", "-Port", "3080"],
+    "cwd": ".",
+    "stop": "none"
+  },
+  "health": {
+    "type": "tcp",
+    "host": "127.0.0.1",
+    "port": 3080,
+    "timeoutMs": 1200
+  },
+  "port": 3080,
+  "log": {
+    "file": "logs/dsh-web.out.log",
+    "follow": true
+  },
+  "params": [
+    { "key": "remote", "label": "远程入口", "type": "string", "default": "" }
+  ],
+  "icon": {
+    "tile": "assets/placeholders/generated/dsh-tile-1024.png",
+    "mark": "assets/placeholders/generated/dsh-mark.png",
+    "source": "placeholder",
+    "wordSource": "text",
+    "license": "CC BY-SA 4.0",
+    "credit": "Head-only image edit from Q版大肥鱼 reference sheet, TreapGoGo/deepseek-whale-girl; unofficial placeholder"
+  },
+  "docs": "docs/apps/dsh.md",
+  "enabled": true
+}

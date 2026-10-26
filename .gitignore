@@ -1,0 +1,24 @@
+# Build artifact
+LauncherHub.exe
+*.pdb
+
+# Local/user reference sheets only (official assets are intentionally tracked)
+assets/placeholders/reference/
+assets/placeholders/generated/*.tmp
+config.local.json
+apps/
+assets/**/official-*
+*.local.ini
+
+# Runtime data
+*.log
+!docs/*.log
+window.ini
+logs/
+output/
+.preview/
+
+# IDE / OS
+.vs/
+*.user
+Thumbs.db

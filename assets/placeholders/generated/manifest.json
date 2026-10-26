@@ -1,0 +1,37 @@
+{
+  "name": "launcher-hub-placeholders",
+  "license": "L/C CC0-1.0; DSH CC BY-SA 4.0",
+  "note": "Placeholder marks; not official brand assets. DSH is an image edit of a community reference sheet.",
+  "generator": "stable-diffusion.cpp / Qwen-Image-2.1-Turbo",
+  "generatedAt": "2026-10-26",
+  "sourceSize": "512x512",
+  "assets": [
+    {
+      "id": "llama",
+      "design": "L",
+      "tile": "llama-tile-1024.png",
+      "mark": "llama-mark.png",
+      "source": "llama-source.webp",
+      "prompt": "../prompts/llama-tile.txt"
+    },
+    {
+      "id": "comfy",
+      "design": "C",
+      "tile": "comfy-tile-1024.png",
+      "mark": "comfy-mark.png",
+      "source": "comfy-source.webp",
+      "prompt": "../prompts/comfy-tile.txt"
+    },
+    {
+      "id": "dsh",
+      "design": "Whale Girl Head (image edit A)",
+      "tile": "dsh-tile-1024.png",
+      "mark": "dsh-mark.png",
+      "source": "dsh-source.webp",
+      "prompt": "../prompts/dsh-edit-avatar.txt",
+      "promptLicense": "CC BY-SA 4.0",
+      "outputLicense": "CC BY-SA 4.0",
+      "credit": "Head-only image edit from Q版大肥鱼 reference sheet, TreapGoGo/deepseek-whale-girl; unofficial"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "example-light",
+  "colors": {
+    "bg": "#F4F7FB",
+    "surface": "#FFFFFF",
+    "surfaceAlt": "#EDF2F8",
+    "text": "#1D2430",
+    "muted": "#68758A",
+    "border": "#DFE6F0",
+    "accent": "#F26B3A",
+    "accentText": "#FFFFFF"
+  },
+  "radius": { "card": 18, "field": 10, "pill": 14, "gear": 22 },
+  "spacing": { "page": 20, "section": 16, "label": 4 },
+  "typography": { "body": 14, "small": 12, "title": 34, "family": "Segoe UI" },
+  "motion": { "fast": 120, "normal": 200, "page": 280, "easing": "ease-out" }
+}

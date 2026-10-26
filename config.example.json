@@ -1,0 +1,17 @@
+{
+  "appsDir": "apps",
+  "remoteHost": "",
+  "paths": {
+    "llamaRoot": "",
+    "llamaScript": "",
+    "llamaModels": "",
+    "llamaLog": "",
+    "comfyDir": "",
+    "comfyPython": "",
+    "dshDir": "",
+    "dshScript": "",
+    "dshVbs": "",
+    "dshLaunchLog": "",
+    "dshOutLog": ""
+  }
+}

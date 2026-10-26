@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LauncherHub App Manifest",
+  "description": "One app entry for the agent-built launcher template. Unknown fields are rejected so agents get deterministic validation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "kind", "launch", "health", "icon"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,31}$",
+      "description": "Stable identifier; also the folder name under apps/."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40,
+      "description": "Display name, e.g. llama.cpp. The name is text; do not bundle an official logo unless licensed."
+    },
+    "subtitle": { "type": "string", "maxLength": 80 },
+    "kind": {
+      "type": "string",
+      "enum": ["llama", "comfy", "dsh", "generic"],
+      "description": "Runtime adapter family. generic must use a command template."
+    },
+    "accent": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "UI accent color; must pass contrast with white."
+    },
+    "launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["process", "powershell", "http"] },
+        "command": { "type": "string", "minLength": 1 },
+        "args": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "cwd": { "type": "string", "description": "Workspace-relative or absolute path; no personal path in template." },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "stop": { "type": "string", "enum": ["process-tree", "none"], "default": "process-tree" }
+      }
+    },
+    "health": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["http", "tcp", "none"] },
+        "url": { "type": "string" },
+        "host": { "type": "string", "default": "127.0.0.1" },
+        "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+        "timeoutMs": { "type": "integer", "minimum": 100, "maximum": 60000, "default": 1500 }
+      }
+    },
+    "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+    "log": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file": { "type": "string" },
+        "follow": { "type": "boolean", "default": true }
+      }
+    },
+    "params": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "label", "type"],
+        "properties": {
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "type": { "type": "string", "enum": ["string", "int", "bool", "enum"] },
+          "default": {},
+          "min": { "type": "number" },
+          "max": { "type": "number" },
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "icon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tile", "source"],
+      "properties": {
+        "tile": { "type": "string", "description": "1024x1024 complete icon." },
+        "mark": { "type": "string", "description": "512x512 transparent mark." },
+        "word": { "type": "string", "description": "Optional transparent official wordmark. Keep official wordmarks in local assets/official; do not commit them without permission." },
+        "mono": { "type": "string", "description": "Optional monochrome mark." },
+        "source": { "type": "string", "enum": ["placeholder", "official", "user"], "description": "Source of tile/mark. square app icons may be placeholder while the wordmark is official." },
+        "wordSource": { "type": "string", "enum": ["official", "placeholder", "text", "none"], "description": "Source of the full wordmark. text means draw the app name with the system font; official means a locally supplied, uncommitted wordmark." },
+        "license": { "type": "string" },
+        "credit": { "type": "string" }
+      }
+    },
+    "docs": { "type": "string" },
+    "enabled": { "type": "boolean", "default": true }
+  }
+}

@@ -1,0 +1,5 @@
+Use the supplied character sheet as the only visual reference. Keep the exact same character identity, face, hair colors, headband, bows, whale-fin ears, and deep-sea blue palette.
+
+Transform it into a single app-icon head portrait: crop to only the head and neck of the front-facing chibi girl, from the top of the ahoge to the collar. Remove the three-view layout, side and back views, detail panels, body, dress, apron, tail, legs, shoes, white background, and all text or labels.
+
+Place the head centered on a deep indigo rounded-square tile (#0F1B3A) with 150 px safe margin. Keep the white scalloped lace maid headband, bright-blue side bows, deep-blue fin ears with white inner frills, dark-blue bob hair fading to cyan tips, large deep-blue eyes with white highlights, tiny nose, happy open mouth, soft pink cheeks, and pale skin. Clean thick outlines, flat two-tone cel shading, crisp high-contrast icon, no extra characters, no text, no watermark, no 3D, no glow.

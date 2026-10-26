@@ -1,0 +1,37 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build (csc / .NET Framework 4.8)
+        shell: powershell
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
+      - name: Scan for leaked tokens
+        shell: powershell
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\scan-secrets.ps1
+      - name: Validate example manifests
+        shell: powershell
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\validate-apps.ps1
+      - name: Offscreen audits
+        shell: powershell
+        run: |
+          .\LauncherHub.exe --audit-layout
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\LauncherHub.exe --audit-icons
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\LauncherHub.exe --audit-anim
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Upload audit logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: launcher-audit-logs
+          path: C:/Users/runneradmin/AppData/Local/LauncherHub/*.log
+          if-no-files-found: ignore

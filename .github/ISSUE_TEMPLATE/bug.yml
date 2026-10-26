@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible launcher problem
+title: "[bug] "
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include the expected behavior and the actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Build with build.ps1
+        2. Open LauncherHub.exe
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 25H2
+    validations:
+      required: true
+  - type: input
+    id: dpi
+    attributes:
+      label: Display scaling / resolution
+      placeholder: 150% / 2560x1440
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs (redact tokens and personal paths)
+      render: text

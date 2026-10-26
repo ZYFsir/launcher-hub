@@ -1,0 +1,24 @@
+name: Feature / app template
+description: Propose a new app, config field, or framework capability
+title: "[feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Use case
+      description: What should an agent or user be able to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed manifest / code change
+      description: Link the schema field or file if possible.
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundaries
+      options:
+        - label: I have not included official brand assets without permission
+          required: true

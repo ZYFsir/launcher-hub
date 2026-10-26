@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LauncherHub Theme Tokens",
+  "description": "Design tokens for agent restyling. Colors are #RRGGBB; geometry is logical px at 100% window scale.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "colors", "radius", "spacing", "typography", "motion"],
+  "properties": {
+    "name": { "type": "string" },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "surface", "text", "muted", "border", "accent"],
+      "properties": {
+        "bg": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "surface": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "surfaceAlt": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "text": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "muted": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "border": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "accent": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "accentText": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+      }
+    },
+    "radius": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0, "maximum": 40 }
+    },
+    "spacing": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0, "maximum": 80 }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["body", "small", "title"],
+      "properties": {
+        "body": { "type": "number", "minimum": 10, "maximum": 24 },
+        "small": { "type": "number", "minimum": 9, "maximum": 20 },
+        "title": { "type": "number", "minimum": 18, "maximum": 48 },
+        "family": { "type": "string" }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fast", "normal", "page"],
+      "properties": {
+        "fast": { "type": "integer", "minimum": 50, "maximum": 200 },
+        "normal": { "type": "integer", "minimum": 100, "maximum": 400 },
+        "page": { "type": "integer", "minimum": 150, "maximum": 600 },
+        "easing": { "type": "string" }
+      }
+    }
+  }
+}

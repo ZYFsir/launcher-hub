@@ -1,0 +1,39 @@
+{
+  "id": "llama",
+  "name": "llama.cpp",
+  "subtitle": "本地推理 · Vulkan",
+  "kind": "llama",
+  "accent": "#F26B3A",
+  "launch": {
+    "type": "powershell",
+    "command": "scripts/start-llama.ps1",
+    "args": [],
+    "cwd": ".",
+    "stop": "process-tree"
+  },
+  "health": {
+    "type": "http",
+    "url": "http://127.0.0.1:8082/health",
+    "timeoutMs": 1500
+  },
+  "port": 8082,
+  "log": {
+    "file": "logs/llama.out.log",
+    "follow": true
+  },
+  "params": [
+    { "key": "model", "label": "模型", "type": "string", "default": "" },
+    { "key": "ctx", "label": "上下文", "type": "int", "default": 8192, "min": 512, "max": 131072 },
+    { "key": "mmproj", "label": "视觉 mmproj", "type": "string", "default": "" }
+  ],
+  "icon": {
+    "tile": "assets/placeholders/generated/llama-tile-1024.png",
+    "mark": "assets/placeholders/generated/llama-mark.png",
+    "source": "placeholder",
+    "wordSource": "text",
+    "license": "CC0-1.0",
+    "credit": "Launcher Hub placeholder; generated with Qwen-Image"
+  },
+  "docs": "docs/apps/llama.md",
+  "enabled": true
+}
