@@ -28,6 +28,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           .\LauncherHub.exe --audit-anim
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Example manifest audit
+        shell: powershell
+        run: |
+          Copy-Item .\apps.example .\apps -Recurse
+          .\LauncherHub.exe --audit-icons
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\LauncherHub.exe --audit-anim
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Upload audit logs
         if: always()
         uses: actions/upload-artifact@v4
